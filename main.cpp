@@ -74,9 +74,7 @@ int main() {
             }
         }
     }
-    for(int i=0; i<stariFinale.size(); i++){
-        cout<<stariFinale[i]<<endl;
-    }
+
     vector<int> res = {0};
     f>>targetString;
     if(targetString.length() == 0) {
@@ -104,6 +102,12 @@ int main() {
                 }
                 cout << "}" << endl;
             }
+        } else if(automat == "DFA" && accepted_word) {
+            cout<<"{ ";
+            for (int j = 0; j < toatePosibilitatile[0].size(); j++) {
+                cout << toatePosibilitatile[0][j] << " ";
+            }
+            cout<<"}";
         }
     }
     return 0;
