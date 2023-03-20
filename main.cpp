@@ -79,19 +79,31 @@ int main() {
     }
     vector<int> res = {0};
     f>>targetString;
-    dfs(Map, 0, res, targetString, 0, stariFinale);
-    if(accepted_word == 0){
-        cout<<"Cuvantul nu este acceptat de acest automat!"<<endl;
-    } else {
-        cout<<"Cuvantul este acceptat de acest automat!"<<endl;
-    }
-    if(automat == "NFA" && accepted_word){
-        for(int i=0; i<toatePosibilitatile.size(); i++){
-            cout<<"{ ";
-            for(int j=0; j<toatePosibilitatile[i].size(); j++){
-                cout<<toatePosibilitatile[i][j]<<" ";
+    if(targetString.length() == 0) {
+        int ok = 0;
+        for (int i = 0; i < stariFinale.size(); i++) {
+            if (stariFinale[i] == 0) {
+                ok = 1;
+                cout << "Cuvantul vid este acceptat de acest automat!";
             }
-            cout<<"}"<<endl;
+        }
+        if (ok == 0) cout<<"Cuvantul vid nu este acceptat!";
+    }
+    else {
+        dfs(Map, 0, res, targetString, 0, stariFinale);
+        if (accepted_word == 0) {
+            cout << "Cuvantul nu este acceptat de acest automat!" << endl;
+        } else {
+            cout << "Cuvantul este acceptat de acest automat!" << endl;
+        }
+        if (automat == "NFA" && accepted_word) {
+            for (int i = 0; i < toatePosibilitatile.size(); i++) {
+                cout << "{ ";
+                for (int j = 0; j < toatePosibilitatile[i].size(); j++) {
+                    cout << toatePosibilitatile[i][j] << " ";
+                }
+                cout << "}" << endl;
+            }
         }
     }
     return 0;
